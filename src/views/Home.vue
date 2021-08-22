@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <GetBeneficiarios />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import GetBeneficiarios from "@/components/GetBeneficiarios.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    GetBeneficiarios,
+  },
+  mounted() {
+    if (this.$store.getters.logginIn) {
+      this.$store.dispatch("get_beneficiarios");
+    }
+  },
+};
 </script>
+<style>
+</style>
